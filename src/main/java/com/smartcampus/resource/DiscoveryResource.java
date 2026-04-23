@@ -26,4 +26,13 @@ public class DiscoveryResource {
 
         return Response.ok(info).build();
     }
+
+    // Used to demonstrate the Global 500 exception mapper
+    @GET
+    @Path("/trigger500")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response trigger500() {
+        // Intentionally throw to demo the global safety net
+        throw new RuntimeException("Simulated unexpected server error");
+    }
 }
